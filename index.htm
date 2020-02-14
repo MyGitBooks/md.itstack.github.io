@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf-8"utf-8">
+  <link rel="shoticon" href="./favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,user-scalable=0">
+  <meta name="author" content="微信公众号：颜家大少">
+  <meta name="email" content="3056432@qq.com">
+  <meta name="description" content="Markdown排版利器，还能让Markdown内容，无需作任何调整就能同时在微信公众号、博客园、掘金、csdn等平台正确显示当前预览的效果">
+  <title>Md2All</title>  
+  <script src="output/index.js-v=2_8_4" tppabs="http://md.aclickall.com/output/index.js?v=2_8_4"></script>
+   <style type="text/css" id="temp_style" >
+  </style>
+  <style type="text/css">
+    #beian {display: inline-block}
+</style>
+  
+  
+</head>
+<body id="body_id">
+<!-- <div id='file_container'></div> -->
+
+<div class="all_container">
+    
+    
+   <div id="global_popup">     
+      <div class="popup_background"></div>
+      <div class="popup_conetent popup">
+       <!--  <div class="same_file_name_pop">
+          <div class="pop_text">已存在相同的文件名!</div>
+          <button class="popup_btn confirm_btn">确定</button>
+        </div> -->
+      </div>
+    </div>
+    
+   
+    
+    <div id="picture_popup" style="display:none">   
+        <div class="picture_popup_content common_pop">
+            <div class="closePopupContainerId">
+                <span class="icon_class  close_popup_icon close_popup_id" ></span>
+            </div>
+            <div class="picItems">           
+            </div>
+            <div class="picError">
+                <div class="warning">如有图片上传失败！</div>
+                <div>请点击工具栏“图片”图标，检查图床配置！</div>
+                <div>并确认图片类型为：png、jpg、bmp、gif或jpeg!</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="version_popup" style="display:none">   
+        <div class="versionContent common_pop">
+            <div class="closePopupContainerId">
+                <span class="icon_class  close_popup_icon close_popup_id" ></span>
+            </div>
+            <div class="versionContentId">           
+            </div>
+        </div>
+    </div>
+
+    <div id="picture_setting_popup" style="display:none">   
+      <div class="picture_settingPopupContent common_pop">
+          <div class="closePopupContainerId">
+              <span class="icon_class  close_popup_icon close_popup_id" ></span>
+          </div>
+         <div class="uploadPicBtnContainer">
+           <label class="uploadPicBtn" for="uploadPicInputId">请点击选择本地图片</label>
+           <input type="file" name="pic" id="uploadPicInputId" accept="image/png,image/jpg,image/jpeg,image/gif,image/bmp" multiple="multiple" style="display:none"></input>
+        </div>  
+        <div>
+       
+      </div>
+        <div   class="picSettingContainer picSetting">
+            <label class="warning">注：如要插入本地图片，先要在七牛云上注册，填写下面信息并“保存”。OK后,插入本地图片会自动上传到七牛云，并正确显示到Md2All中。</label>
+            <a href="javascript:if(confirm('https://www.cnblogs.com/garyyan/p/9181809.html  \n\n���ļ�δ�� Teleport Pro ���أ���Ϊ ��һ��ʹ��δ֧��Э��ĵ�ַ(����: gopher)��  \n\n����Ҫ�ӷ�����������?'))window.location='https://www.cnblogs.com/garyyan/p/9181809.html'" tppabs="https://www.cnblogs.com/garyyan/p/9181809.html" target="_blank">详细教程,请点击此链接查看</a>
+            <div class="picInputInfoItem"><label class="item_name ">	Access Key:</label><input class="accesskey" placeholder="请输入你在七牛的AccessKey"></input></div>
+            <div class="picInputInfoItem"><label class="item_name ">Secret Key:</label><input class="secretkey" placeholder="请输入你在七牛的SecretKey"></input></div>
+            <div class="picInputInfoItem"><label class="item_name ">Bucket Name:</label><input class="bucketname" placeholder="请输入你在七牛个人的储存空间名称,如:mybucket"></input></div> 
+            <div class="picInputInfoItem"><label class="item_name ">Bucket Domain:</label><input class="bucketdomain" placeholder="请输入你在七牛个人的储存空间域名,如：mydomain.bkt.clouddn.com"></input></div> 
+            <div class="picInputInfoItem autouploadImgItem"><label class="autoUploadImgLabel ">文中需转换为图片的内容(如Latex数学公式),会自动上传到云图床</label><span class="autouploadImg"><input  type="checkbox" class="autouploadImgInput" ></input></span></div> 
+            <button class="savePicSetting">保存设置</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="filewindow_popup" class='popup'></div>
+    <div class="tool_header">    
+          
+         <div id="icon_container_left">  
+              <a id="edit_file" class="icon_class tool_pic_icon edit_icon"  title="打开本地已存草稿，开始编辑,并自动保存"><span class="icon_class"></span></a>
+              <a id="export_file" class="icon_class tool_pic_icon export_icon"  title="导出带样式的HTML文件"><span class="icon_class  "></span></a>
+              <a id="picture" class="icon_class tool_pic_icon picture_icon"  title="上传图片，及图床设置"><span class="icon_class  "></span></a>
+              
+
+        </div>
+
+        <div id="icon_container_right">  
+          <button  id="copy_btn" class="btn button" data-clipboard-action="copy" data-clipboard-target="#render_output_id">复制</button>
+          <a id='mycss_icon'   class=" icon_class" title="可选css样式模板，或自定义css样式" >一键排版 </a>
+           <a id='color_ref'   class=" icon_class color_window_icon" title="参考颜色" > </a>
+          <span id="html_select">HTML <input id="html" type="checkbox" name="html" ></input></span>
+          <span id="codeline_select">代码行数  <input id="codeline" type="checkbox" name="codelineName" ></input></span>
+          <span id="narrowcode_select">代码紧凑  <input id="narrowcode" type="checkbox" name="narrowcode" ></input></span>
+          <div id="code_select" class="theme-wrapper">
+            <label>代码主题：</label><select class="code-theme"></select>
+          </div>    
+
+        </div>
+       
+     </div>
+ 
+  <div id="display_area">
+     
+      <div id="fileWindow">
+      
+
+      </div>
+      <textarea id="editor" spellcheck="false"></textarea>
+      <!-- <div contenteditable="true" id="editor"></div> -->
+      <div id="drag_indicate"></div>
+      <div  id="editor_render" >
+         <div id="render_output_id"></div>
+      </div>
+      <div id="cssSetting" >
+          <div id="cssToolHead">
+               <div id="css_select" class="theme-wrapper">
+                 <label >排版样式选择：</label><select class="css-theme"></select>
+              </div>  
+               <label id="cssnote">注：修改或"恢复预设值"后，要<span style="font-weight: bold;font-size: 17px"> 保 存 </span>才生效</label> 
+          </div>
+          <div id="cssEditArea" contenteditable="true"></div>
+          <div id="cssToolFoot">
+               <a title="修改后，要保存才能看到效果"><span id="css_save" class="icon_class" >保 存</span></a >
+               <a title="恢复预设值后，要保存才能看到效果"><span id="css_reset" class="icon_class" >恢复预设值</span></a>
+               <span id="css_close" class="icon_class">关 闭</span>
+          </div>
+      </div>
+  </div>  
+
+  <div id="container_foot">
+     <span id="foot_css">
+       <span id="saveIndicate">已保存！ </span>
+       <span id="currentFile"></span>
+       <span id="beian"><a  href="javascript:if(confirm('http://www.miitbeian.gov.cn/  \n\n���ļ�δ�� Teleport Pro ���أ���Ϊ ��λ����ʼ��ַ�����õı߽���������·���С�  \n\n����Ҫ�ӷ�����������?'))window.location='http://www.miitbeian.gov.cn/'" tppabs="http://www.miitbeian.gov.cn/" title="网站备案号">粤ICP备17115165号</a></span>
+     </span>    
+  </div>
+</div>
+
+
+<div id="file_export_container">
+   <div id="file_export_tool_head">
+       <a title="退出到主界面"><span id="file_export_exit" class="icon_class" >退出</span></a >
+       <a title="生成文件"><span id="file_export_gen_file" class="icon_class" >生成文件</span></a>
+       <span id="file_export_nameinput"><label id="file_export_note">文件名：</label> <input id="file_export_fileName" value="Md2All"></input><label id="file_export_suffix">.html</label> </span>  
+   </div>
+   <div id="file_export_setting">
+          <div id="file_export_settingHead">
+               
+          </div>
+          <div id="file_export_cssEditArea" contenteditable="true">abcd</div>    
+          <div id="file_export_settingFoot">
+               <a title="修改后，要保存才能看到效果"><span id="file_export_save" class="icon_class" >保 存</span></a >
+               <a title="恢复预设值后，要保存才能看到效果"><span id="file_export_reset" class="icon_class" >恢复预设值</span></a>
+          </div>     
+   </div>
+   <div id="export_iframe_container">
+      <iframe id="export_iframe"></iframe>
+      <div id="export_iframe_cover"></div>
+   </div>
+</div>
+
+
+<div class="color_windown" id="color_window_id">
+      <div class="color_toolbar">
+          <span id="color_name_id">red</span>
+          <span class="icon_class  close_color_icon" id="close_color_id"></span>
+      </div>
+      <div class="color_container">
+          <div class="color_father_container"> 
+              <span class="color_father" style="background:red"></span>            
+          </div>
+          <div class="color_son_container"> 
+              <span class="color_son" style="background:#FFEBEE">#FFEBEE</span>
+         </div>
+     </div>
+</div>
+
+<div class="popup" id="popup_id">
+
+</div>
+
+<script>
+
+ var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "../hm.baidu.com/hm.js-9613757ecf26f057eeb61998d339bd25"/*tpa=https://hm.baidu.com/hm.js?9613757ecf26f057eeb61998d339bd25*/;
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+
+</script>
+ 
+</body>
+
+</html>
